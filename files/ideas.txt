@@ -1,0 +1,50 @@
+Resources for data analysts, data viz experts, data scientists and data engineers
+- technológiák: db, etl, visualization, népszerúség szerint
+- companies
+- conferences
+- podcast
+- jobs
+- universities
+- mooc-ok
+- newsletters
+- books
+- communities
+- certifications
+- salaries
+- job trends
+
+
+https://dashboard.it-harvest.com/
+
+https://diskprices.com/
+https://www.routines.club/
+
+https://thehiveindex.com/
+https://dataengineering.wiki/Concepts/Concepts
+https://db-engines.com/en/system/Google+BigQuery
+
+
+Alpha (α) - Often represents angles or constants in mathematics, and is also used in physics, chemistry, and engineering.
+Beta (β) - Used in mathematics and physics to represent various concepts, such as angles, probabilities, or coefficients.
+Gamma (γ) - Represents various concepts, including angles, the gamma function in mathematics, and gamma rays in physics.
+Delta (Δ) - Symbolizes change or difference, and is used in mathematics, physics, engineering, and other fields to represent various concepts, such as derivatives, differences, or variations.
+Epsilon (ε) - Often represents small quantities or constants in mathematics, and is also used in physics, engineering, and computer science.
+Zeta (ζ) - Primarily used in mathematics, particularly in number theory and calculus.
+Eta (η) - Represents various concepts in mathematics, physics, and engineering, such as efficiency, viscosity, or luminosity.
+Theta (θ) - Symbolizes angles, and is used in mathematics, physics, and engineering to represent various concepts related to angles, rotation, or oscillation.
+Iota (ι) - Primarily used in mathematics, often to represent small or infinitesimal quantities.
+Kappa (κ) - Represents various concepts in mathematics and physics, such as curvature, thermal conductivity, or the coupling constant in quantum field theory.
+Lambda (λ) - Used in mathematics, physics, and computer science to represent various concepts, such as wavelengths, decay constants, or anonymous functions.
+Mu (μ) - Represents various concepts, including micro- (e.g., micrometer) and the coefficient of friction in physics.
+Nu (ν) - Often used in mathematics, physics, and astronomy to represent various concepts, such as frequencies, neutrinos, or kinematic viscosity.
+Xi (ξ) - Primarily used in mathematics, particularly in calculus and statistics.
+Omicron (ο) - Primarily used in mathematics and engineering, and sometimes represents small quantities or negligible terms.
+Pi (π) - Represents the mathematical constant pi, used extensively in mathematics and physics for calculations involving circles and periodic phenomena.
+Rho (ρ) - Represents various concepts, including density, resistivity, or correlation coefficients in mathematics and physics.
+Sigma (σ) - Used in mathematics, physics, and statistics to represent sums, standard deviation, or surface tension.
+Tau (τ) - Symbolizes various concepts, including torque, time constant, or the golden ratio.
+Upsilon (υ) - Often used in mathematics and physics to represent various concepts, such as potential energy or hyperon particles.
+Phi (φ) - Represents the golden ratio in mathematics, as well as various concepts in physics and engineering.
+Chi (χ) - Used in mathematics, physics, and engineering to represent various concepts, such as characteristic function or susceptibility.
+Psi (ψ) - Represents various concepts, including wave functions, angles, or the symbolic representation of a person's mind or soul.
+Omega (ω) - Often used to represent the end or finality, and also represents angular velocity, resistance, or the last element in a sequence.
