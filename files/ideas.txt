@@ -1,3 +1,5 @@
+
+
 Resources for data analysts, data viz experts, data scientists and data engineers
 - technológiák: db, etl, visualization, népszerúség szerint
 - companies
