@@ -59,12 +59,12 @@ def main() -> None:
     target_path = root_folder / Path(DATA_FOLDER) / Path(YEAR + '_' + MONTH)
 
     # GREENHOUSE = 'greenhouse'
-    # GREENHOUSE_BOARD_TOKENS = 'files/master_data/greenhouse_tokens.txt'
+    # GREENHOUSE_BOARD_TOKENS = 'files/master_data/greenhouse_board_tokens.txt'
     # gr_board_tokens = get_board_tokens(root_folder / Path(GREENHOUSE_BOARD_TOKENS))
     # scrape_board_tokens(GREENHOUSE, target_path, gr_board_tokens)
 
     LEVER = 'lever'
-    LEVER_BOARD_TOKENS = 'files/master_data/lever_tokens.txt'
+    LEVER_BOARD_TOKENS = 'files/master_data/lever_board_tokens.txt'
     le_board_tokens = get_board_tokens(root_folder / Path(LEVER_BOARD_TOKENS))
     scrape_board_tokens(LEVER, target_path, le_board_tokens)
 
