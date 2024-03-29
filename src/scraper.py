@@ -8,7 +8,7 @@ import requests
 import db
 
 
-def scrape_job_boards(database: db.Database, target_path: str) -> None:
+def scrape_job_boards(database: db.Database, target_path: Path) -> None:
     ats_job_board_pairs = database.execute_sql('select_ats_job_board.sql', 'without_commit')
 
     for ats_job_board_pair in ats_job_board_pairs:
@@ -66,7 +66,8 @@ def main() -> None:
     root_folder = os.path.dirname(Path(__file__).resolve().parents[0])
     target_path = root_folder / Path(DATA_FOLDER) / Path(YEAR + '_' + MONTH)
 
-    scrape_job_boards(database, target_path)
+    # scrape_job_boards(database, target_path)
+    # TODO: https://stackoverflow.com/questions/40271895/how-to-replace-substrings-like-name-in-a-string-template
 
     #
     # GREENHOUSE = 'greenhouse'
