@@ -11,7 +11,7 @@ import requests
 
 import db
 import utils
-from constants import YEAR, MONTH, DATA_FOLDER, SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER
+from constants import YEAR, MONTH, DATA_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER
 
 
 def scrape_job_boards(target_path: Path) -> None:
@@ -65,20 +65,19 @@ def insert_record_into_scrape_log(ats_id: int, job_board_id: int, success_or_fai
         ats_id=ats_id,
         job_board_id=job_board_id,
         succeeded_or_failed=success_or_fail)
-    database = db.Database(SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER)
+    database = db.Database()
     database.execute_sql_command(sql_command, 'with_commit')
 
 
-def select_job_boards_to_scrape():
+def select_job_boards_to_scrape() -> list | None:
     """
     Select only those job boards that have the last log failed or have not been scraped yet
-    :return:
     """
     sql = utils.read_sql_file(WITHOUT_COMMIT_FOLDER + '/' + 'select_ats_job_board_to_scrape.sql')
     sql_command = string.Template(sql).substitute(
         year_month=YEAR + '_' + MONTH
     )
-    database = db.Database(SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER)
+    database = db.Database()
     return database.execute_sql_command(sql_command, 'without_commit')
 
 
