@@ -23,7 +23,12 @@ https://www.routines.club/
 
 https://thehiveindex.com/
 https://dataengineering.wiki/Concepts/Concepts
+
+competitors
 https://db-engines.com/en/system/Google+BigQuery
+https://www.linkup.com/
+
+
 
 
 Alpha (α) - Often represents angles or constants in mathematics, and is also used in physics, chemistry, and engineering.

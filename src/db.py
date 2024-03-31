@@ -15,6 +15,9 @@ class Database:
         return engine
 
     def exec_statement(self, sql_statement: str) -> CursorResult[Any]:
+        """
+        Execute sql files that need a database commit
+        """
         try:
             engine = self.create_engine()
             with engine.connect() as conn:
@@ -25,6 +28,9 @@ class Database:
             print(e)
 
     def exec_select(self, sql_statement: str):
+        """
+        Execute sql files that do not need a database commit
+        """
         try:
             engine = self.create_engine()
             with engine.connect() as conn:
@@ -33,7 +39,10 @@ class Database:
         except exc.SQLAlchemyError as e:
             print(e)
 
-    def execute_sql(self, sql_file_name: str, type: str):
+    def execute_sql_file(self, sql_file_name: str, type: str):
+        """
+        Read and execute a sql file
+        """
         if type == 'with_commit':
             sql_path = self.with_commit_folder + '/' + sql_file_name
             sql_command = read_sql_file(sql_path)
@@ -43,12 +52,24 @@ class Database:
             sql_command = read_sql_file(sql_path)
             return self.exec_select(sql_command)
 
-    def load_data(self, table_name, data):
-        engine = self.create_engine()
-        data.to_sql(name=table_name, con=engine, if_exists='append', index=False)
+    def execute_sql_command(self, sql_command, type: str):
+        """
+        Execute sql command
+        """
+        if type == 'with_commit':
+            self.exec_statement(sql_command)
+        elif type == 'without_commit':
+            return self.exec_select(sql_command)
+
+    # def load_data(self, table_name, data):
+    #     engine = self.create_engine()
+    #     data.to_sql(name=table_name, con=engine, if_exists='append', index=False)
 
 
 def read_sql_file(sql_path: str) -> str:
+    """
+    Read sql file from disk
+    """
     with open(sql_path, 'r') as file:
         sql_contents = file.read()
     return sql_contents
