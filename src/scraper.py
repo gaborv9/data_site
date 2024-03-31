@@ -6,13 +6,16 @@ import json
 import string
 import os
 from pathlib import Path
+import logging
 
 import requests
 
 import db
 import utils
 from constants import YEAR, MONTH, DATA_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER
+import logutil
 
+logger = logging.getLogger(__name__)
 
 def scrape_job_boards(target_path: Path) -> None:
     """
@@ -21,10 +24,13 @@ def scrape_job_boards(target_path: Path) -> None:
     ats_job_board_pairs = select_job_boards_to_scrape()
 
     for ats_job_board_pair in ats_job_board_pairs:
+
         ats_id = int(ats_job_board_pair[0])
         ats_name = ats_job_board_pair[1]
         job_board_id = int(ats_job_board_pair[2])
         job_board_name = ats_job_board_pair[3]
+
+        logger.info(f'Starting scraping {ats_id} - {ats_name} - {job_board_id} - {job_board_name}')
 
         if ats_name == 'greenhouse':
             url = 'https://boards-api.greenhouse.io/v1/boards/' + job_board_name + '/jobs?content=true'
@@ -35,6 +41,7 @@ def scrape_job_boards(target_path: Path) -> None:
         json_path = target_path / Path(ats_name) / str(job_board_name + ".json")
         scrape_board_token(url, job_board_name, json_path, ats_id, job_board_id)
 
+        logger.info(f'Finished scraping {ats_id} - {ats_name} - {job_board_id} - {job_board_name}')
 
 def scrape_board_token(url: str, board_token: str, json_path: Path, ats_id: int, job_board_id: int) -> None:
     """
@@ -85,9 +92,12 @@ def main() -> None:
     """
     Main function
     """
+
     root_folder = os.path.dirname(Path(__file__).resolve().parents[0])
     target_path = root_folder / Path(DATA_FOLDER) / Path(YEAR + '_' + MONTH)
 
+    logutil.set_up_root_logger()
+    logger.info('Scraping job boards')
     scrape_job_boards(target_path)
 
 
