@@ -8,6 +8,7 @@ import requests
 
 import db
 from constants import *
+import utils
 
 
 def scrape_job_boards(target_path: Path) -> None:
@@ -15,7 +16,7 @@ def scrape_job_boards(target_path: Path) -> None:
     List through all ats systems from database
     """
     database = db.Database(SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER)
-    ats_job_board_pairs = database.execute_sql_file('select_ats_job_board.sql', 'without_commit')
+    ats_job_board_pairs = select_job_boards_to_scrape()
 
     for ats_job_board_pair in ats_job_board_pairs:
         ats_id = int(ats_job_board_pair[0])
@@ -56,14 +57,23 @@ def insert_record_into_scrape_log(ats_id: int, job_board_id: int, success_or_fai
     """
     Insert a record into scrape log table
     """
-    sql = db.read_sql_file(WITH_COMMIT_FOLDER + '/' + 'insert_scrape_log.sql')
+    sql = utils.read_sql_file(WITH_COMMIT_FOLDER + '/' + 'insert_scrape_log.sql')
     sql_command = string.Template(sql).substitute(
-        p_year_month=YEAR + '_' + MONTH,
-        p_ats_id=ats_id,
-        p_job_board_id=job_board_id,
-        p_succeeded_or_failed=success_or_fail)
+        year_month=YEAR + '_' + MONTH,
+        ats_id=ats_id,
+        job_board_id=job_board_id,
+        succeeded_or_failed=success_or_fail)
     database = db.Database(SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER)
     database.execute_sql_command(sql_command, 'with_commit')
+
+
+def select_job_boards_to_scrape():
+    sql = utils.read_sql_file(WITHOUT_COMMIT_FOLDER + '/' + 'select_ats_job_board_to_scrape.sql')
+    sql_command = string.Template(sql).substitute(
+        year_month=YEAR + '_' + MONTH
+    )
+    database = db.Database(SQL_ROOT_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER)
+    return database.execute_sql_command(sql_command, 'without_commit')
 
 
 def main() -> None:
@@ -71,7 +81,6 @@ def main() -> None:
     target_path = root_folder / Path(DATA_FOLDER) / Path(YEAR + '_' + MONTH)
 
     scrape_job_boards(target_path)
-
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,0 @@
-SELECT [ats_id]
-      ,[ats_name]
-      ,[job_board_id]
-      ,[job_board_name]
-FROM [data_site].[dbo].[ats_job_board]
