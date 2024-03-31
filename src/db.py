@@ -13,7 +13,7 @@ class Database:
     """
     def __init__(self) -> None:
         """
-        Intialize Database object
+        Initialize Database object
         """
         self.url = 'mssql+pyodbc://DESKTOP-PGP19NP/data_site?driver=ODBC Driver 17 for SQL Server'
 

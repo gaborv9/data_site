@@ -12,7 +12,7 @@ import requests
 
 import db
 import utils
-from constants import YEAR, MONTH, DATA_FOLDER, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER
+from constants import YEAR, MONTH, WITH_COMMIT_FOLDER, WITHOUT_COMMIT_FOLDER, TARGET_PATH
 import logutil
 
 logger = logging.getLogger(__name__)
@@ -93,12 +93,9 @@ def main() -> None:
     Main function
     """
 
-    root_folder = os.path.dirname(Path(__file__).resolve().parents[0])
-    target_path = root_folder / Path(DATA_FOLDER) / Path(YEAR + '_' + MONTH)
-
     logutil.set_up_root_logger()
     logger.info('Scraping job boards')
-    scrape_job_boards(target_path)
+    scrape_job_boards(TARGET_PATH)
 
 
 if __name__ == "__main__":
