@@ -23,11 +23,12 @@ https://www.routines.club/
 
 https://thehiveindex.com/
 https://dataengineering.wiki/Concepts/Concepts
+https://insights.stackoverflow.com/trends?tags=sql-server%2Coracle
 
 competitors
 https://db-engines.com/en/system/Google+BigQuery
 https://www.linkup.com/
-
+https://www.itjobswatch.co.uk/
 
 
 
